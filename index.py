@@ -49,14 +49,6 @@ def listar():
     if not animais:
         return jsonify({"erro": "Nenhum animal disponível"}), 404
     formatado = "\n".join(f"- {a}" for a in animais)
-    return render_template_string("""
-        <h2>Lista de animais</h2>
-        <textarea rows='10' cols='40'>{{formatado}}</textarea><br><br>
-        <button onclick='copy()'>📋 Copiar</button>
-        <script>
-            function copy() {
-                navigator.clipboard.writeText(document.querySelector('textarea').value);
-                alert('Lista copiada!');
             }
         </script>
     """, formatado=formatado)
